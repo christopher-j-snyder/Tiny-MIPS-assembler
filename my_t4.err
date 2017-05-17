@@ -1,0 +1,40 @@
+1	#New Test #4 for assembler.
+2	#Contains many syntax errors.
+3	                  .text
+4	#The text segment has multiply defined and undefined symbols. 
+5	aa:               add     $1,$2,$3
+6	                  j       bb
+7	                  jj      dddd
+8	aa:               sub     $2,$3,$4
+9	                  jaa     eeeee
+10	bbb:              mul     $20,$21,$22
+11	                  jne     $20,$21,dd
+12	                  jal     dddd
+13	bbb:              rdr     $25
+14	cccc:             prh     $25
+15	                  jgt     $25,$21,ee
+16	                  lwb     $25,0($24)
+17	cccc:             lwa     $5,ff
+18	                  mod     $1,$2,$3
+19	xxxx:             lwb     $4,-1($5)
+20	xxxx:             swb     $3,0($4)
+21	                  j       gg
+22	                  hlt
+23	#Data segment begins here.
+24	                  .data
+25	dddd:             .resw   4
+26	eeeee:            .word   17:2
+27	ffffff:           .word   44:10
+
+
+ERROR: Line 8: multiplyDefinedSymbol	|	aa
+ERROR: Line 13: multiplyDefinedSymbol	|	bbb
+ERROR: Line 17: multiplyDefinedSymbol	|	cccc
+ERROR: Line 20: multiplyDefinedSymbol	|	xxxx
+ERROR: Line 6: undefinedSymbol	|	bb
+ERROR: Line 7: illegalOpcode	|	 
+ERROR: Line 9: illegalOpcode	|	 
+ERROR: Line 11: undefinedSymbol	|	dd
+ERROR: Line 15: undefinedSymbol	|	ee
+ERROR: Line 17: undefinedSymbol	|	ff
+ERROR: Line 21: undefinedSymbol	|	gg
